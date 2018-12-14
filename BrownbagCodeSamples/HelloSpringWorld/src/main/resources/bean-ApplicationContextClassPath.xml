@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!--What if same id on different xml files?  -->
+	<!-- <import resource="bean-beanFactory.xml"/> -->
+
+	
+	<bean id="helloSpring" class="com.sample.beans.HelloSpring" scope="singleton">
+		<property name="objMessage" ref="message" />
+	</bean>
+	
+	<bean id="message" class="com.sample.beans.Message">
+		<property name="message" value="Using ClassPathXmlApplicationContext: Welcome to Java Spring Application!" />
+	</bean>
+	
+	
+	<bean id="prototypeObj" class="com.sample.beans.Prototype" scope="prototype">
+		<property name="message" value="I am a prototype." />
+	</bean>
+	 
+	
+	
+	
+	
+	<!-- Inject proto to singleton -->
+	<!-- <bean id="helloSpringSingle" class="com.sample.beans.HelloSpring" scope="singleton">
+		<property name="objMessage" ref="messageProto" />
+	</bean>
+	
+	<bean id="messageProto" class="com.sample.beans.Message" scope="prototype">
+		<property name="message" value="Using ClassPathXmlApplicationContext: Welcome to Java Spring Application!" />
+	</bean> -->
+	
+	
+	
+	
+	
+	<!-- Inheritance: abstract -->
+	<!-- <bean id="messageParent" abstract="true">
+		<property name="message" value="from parent bean."></property>
+		<property name="something" value="from parent bean."></property>
+		You can not specify a property which can't be found on the child beans
+	</bean>
+	
+	<bean id="message" class="com.sample.beans.Message" parent="messageParent" />
+	
+	<bean id="prototypeObj" class="com.sample.beans.Prototype" scope="prototype" parent="messageParent" /> -->
+	
+	
+	
+	
+	<!-- Inheritance: abstract -->
+	<!-- <bean id="message" class="com.sample.beans.Message">
+		<property name="message" value="From message bean."></property>
+	</bean>
+	
+	<bean id="prototypeObj" class="com.sample.beans.Prototype" scope="prototype" parent="message" /> -->
+	
+	
+	
+	<!-- Autowiring byName -->
+<!-- 	<bean id="helloSpring" class="com.sample.beans.HelloSpring" scope="singleton" autowire="byName" />
+		
+	<bean id="objMessage" class="com.sample.beans.Message">
+		<property name="message" value="Autowired by name" />
+	</bean>
+	 -->
+	 
+	 <!-- Autowiring byType -->
+	<!-- <bean id="helloSpring" class="com.sample.beans.HelloSpring" scope="singleton" autowire="byType" />
+		
+	<bean id="Message" class="com.sample.beans.Message">
+		<property name="message" value="Autowired by type" />
+	</bean> -->
+	
+	 <!-- Autowiring Constructor -->
+	<!-- <bean id="helloSpring" class="com.sample.beans.HelloSpring" scope="singleton" autowire="constructor" />
+		
+	<bean id="Message" class="com.sample.beans.Message">
+		<property name="message" value="Autowired by constructor" />
+	</bean> -->
+	
+</beans>
